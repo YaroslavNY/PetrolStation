@@ -53,6 +53,11 @@ public class Calculation {
         public void setNameOfCity(String name) {
             this.name = name;
         }
+
+        @Override
+        public String toString() {
+            return  getNameOfCity();
+        }
     }
 
     public  void findCheapRefill (Cities city){
