@@ -60,7 +60,8 @@ public class Calculation {
         }
     }
 
-    public  void findCheapRefill (Cities city){
+    public  String findCheapRefill (Cities city){
+        String resultMessage = null;
         int minForwardway = 0, minBackwardWay = 0, counterForward = 1, counterBackward = 1;
         int [][] matrixForward = createMatrixForward();
         int [][] originalMatrixForward = createMatrixForward();
@@ -122,9 +123,11 @@ public class Calculation {
             System.out.println("counter = " + counter);
             if (city.getID() == counter){
                 System.out.println("∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в своем городе по цене: " + minForwardway);
+                resultMessage = "∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в своем городе по цене: " + minForwardway;
             }
             else {
                 System.out.println("∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в городе " + Cities.values()[counter].getNameOfCity() + " ѕо цене: " + minForwardway + " в пр€мом направлении ");
+                resultMessage = "∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в городе " + Cities.values()[counter].getNameOfCity() + " ѕо цене: " + minForwardway + " в пр€мом направлении ";
             }
         }
         else if (minForwardway == minBackwardWay){
@@ -138,9 +141,11 @@ public class Calculation {
 
             if (city.getID() == counter){
                 System.out.println("∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в своем городе по цене: " + minForwardway);
+                resultMessage = "∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в своем городе по цене: " + minForwardway;
             }
             else {
                 System.out.println("∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в городе " + Cities.values()[counter].getNameOfCity() + " ѕо цене: " + minForwardway + " в любом направлении ");
+                resultMessage = "∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в городе " + Cities.values()[counter].getNameOfCity() + " ѕо цене: " + minForwardway + " в любом направлении ";
             }
         }
         else {
@@ -153,11 +158,14 @@ public class Calculation {
             System.out.println("counter = " + counter);
             if (city.getID() == counter){
                 System.out.println("∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в своем городе по цене: " + minBackwardWay);
+                resultMessage = "∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в своем городе по цене: " + minBackwardWay;
             }
             else {
                 System.out.println("∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в городе " + Cities.values()[counter].getNameOfCity() + " ѕо цене: " + minBackwardWay + " в обратном направлении ");
+                resultMessage = "∆ител€м города " + city.getNameOfCity() + " дешевле заправитьс€ в городе " + Cities.values()[counter].getNameOfCity() + " ѕо цене: " + minBackwardWay + " в обратном направлении ";
             }
         }
+        return resultMessage;
     }
 
     public  int [][] createMatrixForward () {
